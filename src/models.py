@@ -95,7 +95,7 @@ def invert_gradient_FC_Model(gr, *args):
     # At least one gradient with respect to the bias should not be null
     if (gr[1]==0).all():
         raise Exception("Bias gradient is null")
-    idx = np.argmax(np.abs(gr[1]))
+    idx = torch.argmax(torch.abs(gr[1]))
     output = 1/gr[1][idx] * gr[0][idx]
 
     return output.reshape(1,3,32,32)
