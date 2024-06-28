@@ -69,14 +69,14 @@ fig, ax1 = plt.subplots()
 color = 'tab:red'
 ax1.set_xlabel('Distance to the attacker')
 ax1.set_ylabel('PSNR', color=color)
-ax1.errorbar( range(1,n-1), torch.stack(psnrs).mean(0)[1:], yerr = torch.stack(psnrs).std(0)[1:],fmt= 'o-', color = color)
+ax1.errorbar( range(1,n-1), torch.stack(psnrs).mean(0)[1:].cpu(), yerr = torch.stack(psnrs).std(0)[1:].cpu(),fmt= 'o-', color = color)
 ax1.tick_params(axis='y', labelcolor=color)
 
 ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 
 color = 'tab:blue'
 ax2.set_ylabel('Relative Square Loss', color=color)  
-ax2.errorbar( range(1,n-1), torch.tensor(rss).mean(0)[:-1], yerr = torch.tensor(rss).std(0)[:-1],fmt= 'o-', color = color)
+ax2.errorbar( range(1,n-1), torch.tensor(rss).mean(0)[:-1].cpu(), yerr = torch.tensor(rss).std(0)[:-1].cpu(),fmt= 'o-', color = color)
 
 ax2.tick_params(axis='y', labelcolor=color)
 
