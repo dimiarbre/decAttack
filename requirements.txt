@@ -5,3 +5,5 @@ matplotlib
 torch
 torchvision 
 scikit-learn
+tqdm
+seaborn
